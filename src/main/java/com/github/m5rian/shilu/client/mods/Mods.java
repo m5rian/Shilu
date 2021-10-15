@@ -17,6 +17,7 @@ public class Mods {
     // Other mods
     public static ToggleSprint TOGGLE_SPRINT;
     public static Perspective PERSPECTIVE;
+    public static Zoom ZOOM;
 
     public static void load(HudManager hudManager) {
         ARMOUR_STATUS = new ArmourStatus();
@@ -26,6 +27,7 @@ public class Mods {
 
         TOGGLE_SPRINT = new ToggleSprint();
         PERSPECTIVE = new Perspective();
+        ZOOM = new Zoom();
 
         hudManager.register(
                 ARMOUR_STATUS,

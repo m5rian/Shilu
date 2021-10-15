@@ -1,5 +1,6 @@
 package com.github.m5rian.shilu.client;
 
+import com.github.m5rian.shilu.client.mods.impl.Zoom;
 import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 
@@ -20,11 +21,16 @@ public class CustomKeyBind {
      * Keybinding to toggle the {@link com.github.m5rian.shilu.client.mods.impl.Perspective} mod.
      */
     public static final KeyBinding PERSPECTIVE = new KeyBinding("360 Perspective", Keyboard.KEY_L, Client.NAME);
+    /**
+     * Keybinding to toggle the {@link Zoom} mod.
+     */
+    public static final KeyBinding ZOOM = new KeyBinding("Zoom", Keyboard.KEY_C, Client.NAME);
 
     public static final KeyBinding[] customKeys = {
             GUI_MOD_POSITION,
             TOGGLE_SPRINT,
-            PERSPECTIVE
+            PERSPECTIVE,
+            ZOOM
     };
 
 }

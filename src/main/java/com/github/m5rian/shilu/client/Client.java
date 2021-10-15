@@ -1,7 +1,6 @@
 package com.github.m5rian.shilu.client;
 
 import com.github.m5rian.shilu.client.cosmetics.CosmeticManager;
-import com.github.m5rian.shilu.client.cosmetics.impl.Cape;
 import com.github.m5rian.shilu.client.cosmetics.impl.DogFilter;
 import com.github.m5rian.shilu.client.events.EventManager;
 import com.github.m5rian.shilu.client.events.EventScheduler;
@@ -70,7 +69,8 @@ public class Client {
                 // Mods
                 Mods.CPS,
                 Mods.TOGGLE_SPRINT,
-                Mods.PERSPECTIVE
+                Mods.PERSPECTIVE,
+                Mods.ZOOM
         );
         Logger.info("Started Client");
     }

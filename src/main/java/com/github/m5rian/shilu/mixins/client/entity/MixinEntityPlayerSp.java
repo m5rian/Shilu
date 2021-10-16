@@ -2,14 +2,12 @@ package com.github.m5rian.shilu.mixins.client.entity;
 
 import com.github.m5rian.shilu.client.events.impl.PlayerMoveEvent;
 import net.minecraft.client.entity.EntityPlayerSP;
-import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityPlayerSP.class)
-@Debug(export = true)
 public class MixinEntityPlayerSp {
 
     // TODO Doesn't get called

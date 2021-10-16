@@ -1,6 +1,8 @@
 package com.github.m5rian.shilu.client;
 
 import com.github.m5rian.shilu.client.mods.impl.Zoom;
+import com.github.m5rian.shilu.client.utilities.Storage;
+import com.google.gson.JsonObject;
 import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 
@@ -32,5 +34,31 @@ public class CustomKeyBind {
             PERSPECTIVE,
             ZOOM
     };
+
+    public static void load() {
+        if (!Storage.getKeybindingsFile().exists()) {
+            Storage.writeFile(Storage.getKeybindingsFile(), "{}");
+        }
+
+        final JsonObject config = Storage.readJsonObject(Storage.getKeybindingsFile());
+        for (KeyBinding key : customKeys) {
+            if (config.has(key.getKeyDescription())) {
+                final int binding = config.get(key.getKeyDescription()).getAsInt();
+                key.setKeyCode(binding);
+            } else {
+                config.addProperty(key.getKeyDescription(), key.getKeyCode());
+            }
+        }
+        Storage.writeFile(Storage.getKeybindingsFile(), config.toString());
+    }
+
+    public static void save() {
+        final JsonObject json = new JsonObject();
+        for (KeyBinding key : customKeys) {
+            json.addProperty(key.getKeyDescription(), key.getKeyCode());
+        }
+
+        Storage.writeFile(Storage.getKeybindingsFile(), json.toString());
+    }
 
 }

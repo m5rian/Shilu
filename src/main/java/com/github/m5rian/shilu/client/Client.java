@@ -48,6 +48,7 @@ public class Client {
     public void init() {
         Logger.info("Starting Client");
         Storage.init();
+        CustomKeyBind.load();
         discordRichPresence.start(); // Start discord rich presence
         cosmeticManager.registerCosmetics(
                 //new Wing(),

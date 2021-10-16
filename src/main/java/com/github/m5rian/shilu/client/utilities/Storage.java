@@ -1,8 +1,11 @@
 package com.github.m5rian.shilu.client.utilities;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Marian
@@ -19,6 +22,8 @@ public class Storage {
      * the directory where the mod settings are sitting.
      */
     private static File MODS_DIR = new File(ROOT_DIR, "mods");
+
+    private static File KEYBINDINGS_FILE = new File(ROOT_DIR, "keybindings.json");
 
     /**
      * Creates all needed directories if they don't exist yet.
@@ -37,6 +42,10 @@ public class Storage {
      */
     public static File getModsDir() {
         return MODS_DIR;
+    }
+
+    public static File getKeybindingsFile() {
+        return KEYBINDINGS_FILE;
     }
 
     /**
@@ -61,6 +70,21 @@ public class Storage {
         }
     }
 
+    public static boolean writeFile(File file, String json) {
+        try {
+            if (!file.exists()) file.createNewFile();
+            final FileOutputStream outputStream = new FileOutputStream(file);
+            outputStream.write(json.getBytes(StandardCharsets.UTF_8));
+            outputStream.flush();
+            outputStream.close();
+
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     /**
      * Reads a .json file and parse it to the provided {@param clazz}.
      *
@@ -69,27 +93,52 @@ public class Storage {
      * @param <T>   T Class type thingy? not sure how this is called...
      * @return Returns {@param T} from the json file.
      */
-    public static <T> T readFromJson(File file, Class<T> clazz) {
+    public static <T> T readJson(File file, Class<T> clazz) {
         try {
-            final FileInputStream inputStream = new FileInputStream(file);
-            final InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            final BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-            final StringBuilder string = new StringBuilder();
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                string.append(line);
-            }
-
-            bufferedReader.close();
-            inputStreamReader.close();
-            inputStream.close();
-
-            return gson.fromJson(string.toString(), clazz);
+            final String content = readJsonToString(file);
+            return gson.fromJson(content, clazz);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static JsonArray readJsonArray(File file) {
+        try {
+            final String content = readJsonToString(file);
+            return gson.fromJson(content, JsonArray.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static JsonObject readJsonObject(File file) {
+        try {
+            final String content = readJsonToString(file);
+            System.out.println("CONTENT\n" + content);
+            return gson.fromJson(content, JsonObject.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private static String readJsonToString(File file) throws IOException {
+        final FileInputStream inputStream = new FileInputStream(file);
+        final InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        final BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+        final StringBuilder string = new StringBuilder();
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            string.append(line);
+        }
+
+        bufferedReader.close();
+        inputStreamReader.close();
+        inputStream.close();
+        return string.toString();
     }
 
     /**

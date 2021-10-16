@@ -58,7 +58,7 @@ public abstract class ModDraggable extends Mod implements IRenderer {
 
         // Mod positioning config already exists
         else {
-            ScreenPosition position = Storage.readFromJson(file, ScreenPosition.class); // Load position from stored file
+            ScreenPosition position = Storage.readJson(file, ScreenPosition.class); // Load position from stored file
             this.position = position; // Apply position to mod
         }
 

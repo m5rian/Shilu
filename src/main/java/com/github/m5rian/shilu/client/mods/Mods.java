@@ -14,6 +14,7 @@ public class Mods {
     private static FpsCount FPS_COUNT;
     private static Keystrokes KEYSTROKES;
     public static Cps CPS;
+    private static PackDisplay PACK_DISPLAY;
     // Other mods
     public static ToggleSprint TOGGLE_SPRINT;
     public static Perspective PERSPECTIVE;
@@ -24,6 +25,7 @@ public class Mods {
         FPS_COUNT = new FpsCount();
         KEYSTROKES = new Keystrokes();
         CPS = new Cps();
+        PACK_DISPLAY = new PackDisplay();
 
         TOGGLE_SPRINT = new ToggleSprint();
         PERSPECTIVE = new Perspective();
@@ -33,7 +35,8 @@ public class Mods {
                 ARMOUR_STATUS,
                 FPS_COUNT,
                 KEYSTROKES,
-                CPS
+                CPS,
+                PACK_DISPLAY
         );
     }
 

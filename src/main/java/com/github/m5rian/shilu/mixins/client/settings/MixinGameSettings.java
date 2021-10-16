@@ -22,12 +22,12 @@ public class MixinGameSettings {
     public KeyBinding[] keyBindings;
 
     @Inject(at = @At("RETURN"), method = "<init>()V")
-    public void onConstructorWithArgs(CallbackInfo ci) {
+    public void onConstWithoutArgs(CallbackInfo ci) {
         keyBindings = ArrayUtils.addAll(keyBindings, CustomKeyBind.customKeys);
     }
 
     @Inject(at = @At("RETURN"), method = "<init>(Lnet/minecraft/client/Minecraft;Ljava/io/File;)V")
-    public void onConstructorWithoutArgs(Minecraft mc, File p_i46326_2_, CallbackInfo ci) {
+    public void onConstWithArgs(Minecraft mc, File p_i46326_2_, CallbackInfo ci) {
         keyBindings = ArrayUtils.addAll(keyBindings, CustomKeyBind.customKeys);
     }
 

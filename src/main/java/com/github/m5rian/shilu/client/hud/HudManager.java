@@ -2,6 +2,9 @@ package com.github.m5rian.shilu.client.hud;
 
 import com.github.m5rian.shilu.client.events.EventTarget;
 import com.github.m5rian.shilu.client.events.impl.RenderEvent;
+import com.github.m5rian.shilu.client.gui.HudConfigScreen;
+import com.github.m5rian.shilu.client.gui.ModMenuGui;
+import com.github.m5rian.shilu.client.gui.ScrollableScreen;
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
@@ -30,6 +33,7 @@ public class HudManager {
     }
 
     public void openConfigScreen() {
+        //Minecraft.getMinecraft().displayGuiScreen(new ModMenuGui());
         Minecraft.getMinecraft().displayGuiScreen(new HudConfigScreen(this));
     }
 

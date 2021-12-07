@@ -1,5 +1,9 @@
-package com.github.m5rian.shilu.client.hud;
+package com.github.m5rian.shilu.client.gui;
 
+import com.github.m5rian.shilu.client.hud.HudManager;
+import com.github.m5rian.shilu.client.hud.IRenderConfig;
+import com.github.m5rian.shilu.client.hud.IRenderer;
+import com.github.m5rian.shilu.client.hud.ScreenPosition;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
@@ -35,7 +39,6 @@ public class HudConfigScreen extends GuiScreen {
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        super.drawDefaultBackground();
         final float zLevel = this.zLevel; // Get a backup of the current z level
         this.zLevel = 250.0F;
 

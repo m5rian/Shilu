@@ -8,6 +8,7 @@
     "client.MixinMinecraft",
     "client.entity.MixinEntityPlayerSp",
     "client.gui.MixinGuiControls",
+    "client.gui.MixinGuiIngame",
     "client.renderer.MixinEntityRenderer",
     "client.renderer.MixinRenderPlayer",
     "client.renderer.entity.MixinRenderManager",

@@ -36,7 +36,7 @@ compileJava.options.encoding = "UTF-8"
 
 minecraft {
     version = "1.8.9"
-    tweakClass = "${package_name}.mixins.${client_name_upper_case}Tweaker"
+    tweakClass = "${package_name}.${client_name}.mixins.${client_name_upper_case}Tweaker"
     runDir = "run"
     mappings = "stable_20"
     clientJvmArgs = ["-XX:-DisableExplicitGC"]
@@ -104,7 +104,7 @@ jar {
 jar {
     manifest.attributes(
             "MixinConfigs": "mixins.${client_name}.json",
-            "TweakClass": "${package_name}.mixins.${client_name_upper_case}Tweaker",
+            "TweakClass": "${package_name}.${client_name}.mixins.${client_name_upper_case}Tweaker",
             "TweakOrder": 0,
             "Manifest-Version": 1.0
     )
